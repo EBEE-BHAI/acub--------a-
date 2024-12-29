@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACFHUB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif; /* Stylish font */
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+            color: black;
+        }
+
+        h2 {
+            font-size: 2.65rem;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Rainbow Gradient Animation for full screen */
+        #header {
+    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    background-size: 600% 600%;
+    animation: rainbowBackground 5s ease infinite;
+    padding: 1px 20px; /* Reduced padding to decrease the gap */
+    color: white;
+
+        }
+
+        #header p {
+            background: transparent;
+            padding: 15px;
+            border-radius: 10px;
+            color: black;
+            font-size: 1.2rem;
+        }
+    /* Styling for the 'See Plans' button */
+#see-plans-button {
+    background-color: #008CBA; /* Light blue background */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    padding: 20px 12px; /* Smaller internal space */
+    margin: 400px 0;     /* Minimal space around */    border-radius: 8px; /* Rounded corners */
+    font-size: 16px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect for the button */
+#see-plans-button:hover {
+    background-color: #005f73; /* Darker blue on hover */
+}
+
+        /* Animation for Rainbow Background */
+        @keyframes rainbowBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        button {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 20px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        /* Header Section - White background */
+        #header {
+            background-color: #ffffff;
+        }
+
+        #header button {
+            margin-top: 20px;
+        }
+
+        /* New Section - Pink background */
+        #atomcyberforce {
+            background-color: #ffcccc;
+        }
+
+        /* Rate Cards with realistic shadow */
+        .plan {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+            margin: 20px auto;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .plan h3 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .plan p {
+            margin: 5px 0;
+        }
+
+        .plan .price {
+            font-size: 1.5rem;
+            color: #ff4444;
+        }
+
+        .plan .cut-price {
+            text-decoration: line-through;
+            font-size: 1.1rem;
+            color: gray;
+        }
+
+        .plan button {
+            margin-top: 15px;
+        }
+
+        /* Reviews Section */
+        #reviews {
+            background: #f9f9f9;
+            padding: 40px 20px;
+        }
+
+        .review {
+            display: flex;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .review img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .review-content {
+            text-align: left;
+        }
+
+        .review-content h4 {
+            margin: 0;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .review-content h4 img {
+            margin-left: 5px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .review-content small {
+            color: gray;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .review-content p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Rainbow Gradient -->
+    <section id="header">
+        <button onclick="scrollToPlans()">Sign Up</button>
+        <button onclick="window.location.href='login.html'">Login</button>
+        <h2>What is ACFHUB?</h2>
+        <p>
+            ACFHUB is the ultimate destination for monthly subscriptions, offering exclusive access to tools, resources, and expert services for professionals and beginners alike. Join now and elevate your productivity.
+        </p>
+        <h2>Which Services Will You Get?</h2>
+        <button id="see-plans-button" onclick="scrollToPlans()">See Plans</button>    </section>
+
+    <!-- New Section - Pink Background -->
+    <section id="atomcyberforce">
+        <h2>What is AtomCyberForce?</h2>
+        <p>
+            AtomCyberForce is an innovative team providing top-tier cybersecurity tools, educational resources, and advanced services. We aim to empower professionals and businesses by delivering cutting-edge solutions.
+        </p>
+    </section>
+
+    <!-- Rate Plans Section -->
+    <section id="plans">
+        <h2>Our Plans</h2>
+        <p>Select A Plan To Signup</p>
+        <div class="plan">
+            <p class="save">Save 40% On New Year Discount</p>
+            <h3>Spark Plan</h3>
+            <p class="cut-price">₹2800</p>
+            <p class="price">₹880/2 month</p>
+            <p>• Priority Support</p>
+            <p>• Lifetime Access To EBEE Toolkit</p>
+            <p>• Can Activate (2) Keys More Of EBEE Toolkit</p>
+            <p>• Will Teach You How To Create Your Toolkit</p>
+            <p>• ACF Store Source Code</p>
+            <p>• Priority Chance For Winning In Giveaway</p>
+            <p>• SEBT 11/12 Will Be Provided</p>
+            <p>• BlackHat Pakistan Carding Course</p>
+            <p>• MegaHack Pack</p>
+            <p>• Complete Cracking Course</p>
+            <p>• Working Crash Bots And Panels</p>
+            <p>• Waheed Zen Client Hunting Course</p>
+            <p>• Fake Number Trick (+48/+1)</p>
+            <p>• Canva Pro On Your Email </p>
+            <p>• ACF VPN With Static Ip</p>
+            <p>• Tiktok Ads Agency Method</p>
+            <p>• ACF Store Source Code</p>
+            <p>• BOT Master With KeyGen</p>
+            <p>• ACF Store Source Code</p>
+            <p>• 1 Year Rdp Method</p>
+            <p>• Daily/Weekly Working Bins</p>
+            <p>• Linux Rdp Method</p>
+            <p>• YPIOP</p>
+            <p>• Personal App For Chatting With Each Other</p>
+            <p>• Will Teach You How To Grow Your Community</p>
+            <p>• Livestream On Google Meet Only For This Plan Buyers</p>
+            <p>• Teach You (3) Money Making Works</p>
+            <p>• Google 2 TB Storage On Your Mail</p>
+            <p>• Google Gemini Pro</p>
+            <p>• Youtube Premium</p>
+            <p>• Youtube Music Premium</p>
+            <p>• Weekly Premium Accounts Giveaway</p>
+             <button onclick="window.location.href='purchase-spark-plan.html'">Buy Now</button>
+       
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <img src="image1.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>FAIZAN <img src="tick.png" alt="Verified"></h4>
+                <small>3 Days Ago</small>
+                <p>Bets website I have ever used! Super smooth experience and fast tools.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image2.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>ALI RAZA <img src="tick.png" alt="Verified"></h4>
+                <small>5 Days Ago</small>
+                <p>Highly recommended! The tools here saved me so much time and effort.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image3.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>SAMI ULLAH<img src="tick.png" alt="Verified"></h4>
+                <small>1 Week Ago</small>
+                <p>Perfect for beginners like me. Easy to use and very helpful resources.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image4.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>AHMED RAZA<img src="tick.png" alt="Verified"></h4>
+                <small>2 Weeks Ago</small>
+                <p>Excellent platform! Their customer support is very responsive and friendly.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image5.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>HAMZA MALIK <img src="tick.png" alt="Verified"></h4>
+                <small>3 Weeks Ago</small>
+                <p>The best experience so far. Highly professional and efficient platform.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image6.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>USMAN ALI <img src="tick.png" alt="Verified"></h4>
+                <small>1 Month Ago</small>
+                <p>I love the tools provided here. It boosted my workflow tremendously.</p>
+            </div>
+        </div>
+
+        <div class="review">
+            <img src="image7.jpeg" alt="Profile Picture">
+            <div class="review-content">
+                <h4>JAVED KHAN<img src="tick.png" alt="Verified"></h4>
+                <small>1 Month Ago</small>
+                <p>Incredible value for the price! I use it daily for my work. Thank you!</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function scrollToPlans() {
+            document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

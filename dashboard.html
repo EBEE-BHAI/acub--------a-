@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACF Hub Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;500;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #42a5f5, #1e88e5);
+      color: white;
+      font-size: 26px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      width: 100%;
+    }
+    .info-box {
+      text-align: center;
+      margin: 20px auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+      background: #ffffff;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .course-container {
+      padding: 20px;
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .course-box {
+      width: 90%;
+      max-width: 700px;
+      margin: 10px 0;
+      padding: 15px;
+      text-align: center;
+      background: linear-gradient(to right, #64b5f6, #42a5f5);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .course-box:hover {
+      background: linear-gradient(to right, #1e88e5, #1976d2);
+      transform: translateY(-3px);
+    }
+    .detail-box {
+      display: none;
+      background: #f3f4f6;
+      padding: 15px;
+      margin-top: -10px;
+      width: 90%;
+      max-width: 700px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      color: #333;
+    }
+    .footer {
+      text-align: center;
+      margin: 20px auto;
+      font-size: 14px;
+      color: #666;
+    }
+    .footer p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    Hi 👋, <br>
+    Welcome to ACFHUB Dashboard
+  </div>
+
+  <!-- Information Box -->
+  <div class="info-box">
+    Active Subscription = Spark Plan (Monthly)<br>
+    <p>Below Is All Of Your Active Goodies</p>
+  </div>
+
+  <!-- Courses Section -->
+  <div class="course-container">
+    <div class="course-box" onclick="toggleDetails(0)">EBEE TOOLKIT 2.0 LIFETIME ACCESS</div>
+    <div id="details-0" class="detail-box">Click Here To Access <a href="https://wa.me/48732105331?text=Toolkit+Subscription+7U7" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(1)">ACF STORE SOURCE CODE</div>
+    <div id="details-1" class="detail-box">Click Here To Access <a href="https://drive.google.com/file/d/10OppeXnBM4jEqjbe7_f-6CkNf_boDrlL/view?usp=sharing" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(2)">BLACK HAT PAKISTAN CARDING COURSE</div>
+    <div id="details-2" class="detail-box">Click Here To Access <a href="https://www.terabox.app/wap/share/filelist?surl=OdqUQmdl0oTSS4pT-6C-8Q&path=%2FOthers%2FBlackhat%20Pakistan%20-%20Spamming%20and%20Carding%20Full%20Course&isSelected=true" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(3)">MEGA HACK PACK</div>
+    <div id="details-3" class="detail-box">Click Here To Access <a href="https://www.mediafire.com/file/26csnk0gik0ic5q/Master_Hack_Pack.zip/file" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(4)">CRACKING COURSE</div>
+    <div id="details-4" class="detail-box">Click Here To Access <a href="https://www.mediafire.com/file/26csnk0gik0ic5q/Master_Hack_Pack.zip/file" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(5)">1 YEAR RDP METHOD</div>
+    <div id="details-5" class="detail-box">Click Here To Access <a href="https://drive.google.com/file/d/1QGkA-QqyMwZZ4n7WqerST2kASM53MBg6/view?usp=drivesdk" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(6)">(+1/+48) TRICK</div>
+    <div id="details-6" class="detail-box">Click Here To Access <a href="https://wa.me/?text=48+1+number+trick" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(7)">CRASH BOT FILE</div>
+    <div id="details-7" class="detail-box">Click Here To Access <a href="https://www.mediafire.com/file/69du4cer3y8zxvs/Xlenza_Version3.0_enc.zip/file" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(8)">PANEL FOR WHATSAPP BOT</div>
+    <div id="details-8" class="detail-box">Click Here To Access <a href="https://bot-hosting.net" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(9)">ACF VPN</div>
+    <div id="details-9" class="detail-box">Click Here To Access <a href="https://wa.me/?text=vpn+acfhub" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(10)">CANVA PRO</div>
+    <div id="details-10" class="detail-box">Click Here To Access <a href="https://wa.me/?text=CANVA" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(11)">TIKTOK ADS AGENCY METHOD</div>
+    <div id="details-11" class="detail-box">This Perk Will Unlock At Your 2nd Month</div>
+    
+    <div class="course-box" onclick="toggleDetails(12)">BOT MASTER WITH KEYGEN</div>
+    <div id="details-12" class="detail-box">Click Here To Access <a href="https://wa.me/?text=BotMaster" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(13)">LINUX RDP METHOD</div>
+    <div id="details-13" class="detail-box">Click Here To Access <a href="http://rdphostings.com/" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(14)">FRESH BINS</div>
+    <div id="details-14" class="detail-box">Send Join Request In Your Group <a href="https://chat.whatsapp.com/HLb8Qr2Xwo1CxPbVkoSNwo" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+<div class="course-box" onclick="toggleDetails(15)">GOOGLE 2 TB STORAGE</div>
+    <div id="details-15" class="detail-box">Click Here To Access <a href="https://wa.me/?text=google+2tb" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(16)">YOUTUBE/YT MUSIC PREMIUM</div>
+    <div id="details-16" class="detail-box">Click Here To Access <a href="https://wa.me/?text=yt+premium" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+    <div class="course-box" onclick="toggleDetails(17)">(3) MONEY MAKING SHORT SKILLS</div>
+    <div id="details-17" class="detail-box">Click Here To Access <a href="https://chat.whatsapp.com/FoqTlBGADJi8zlv9r7Itzn" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+    
+<div class="course-box" onclick="toggleDetails(18)">TOOLKIT CREATION COURSE</div>
+    <div id="details-18" class="detail-box">This Will Unlock At Your 2nd Month</div>
+    
+    <div class="course-box" onclick="toggleDetails(19)">COMMUNITY GROWTH COURSE</div>
+    <div id="details-19" class="detail-box">Click Here To Access <a href="https://chat.whatsapp.com/FoqTlBGADJi8zlv9r7Itzn" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+
+    <div class="course-box" onclick="toggleDetails(20)">Data Science Masterclass</div>
+    <div id="details-20" class="detail-box">Click Here To Access <a href="https://example.com" target="_blank" style="color: blue; text-decoration: underline;">Click Here</a></div>
+
+    <!-- Add more boxes as needed -->
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p>If Any Method Or Anything Is Not Working, Contact Us On Email: supportacfhub@gmail.com</p>
+    <p>We Will Resolve Your Issue In 1 To 2 Working Hours.</p>
+    <p>&copy; ACF Hub</p>
+  </div>
+
+  <script>
+    // Toggle Details Functionality
+    function toggleDetails(index) {
+      const detailBox = document.getElementById(`details-${index}`);
+      if (detailBox.style.display === 'block') {
+        detailBox.style.display = 'none';
+      } else {
+        // Hide other detail boxes
+        document.querySelectorAll('.detail-box').forEach(box => box.style.display = 'none');
+        detailBox.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

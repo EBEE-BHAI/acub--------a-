@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark Plan Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .container {
+            max-width: 100%;
+            margin: 50px auto;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            width: 100%;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            color: #00f2fe;
+            font-family: 'Orbitron', sans-serif;
+        }
+        input, select, textarea {
+            width: 100%;
+            max-width: 100%;
+            margin: 10px 0;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            background: #00f2fe;
+            color: #141e30;
+            font-weight: bold;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background: #00b0c9;
+        }
+        #paymentDetails {
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            margin-top: 10px;
+        }
+        #paymentDetails p {
+            margin-bottom: 10px;
+        }
+        select, input {
+            font-family: 'Poppins', sans-serif;
+        }
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Page</h1>
+        <h2>Purchase Spark Plan</h2>
+        
+        <form id="paymentForm">
+            <h3>User Details</h3>
+            <input type="text" id="username" placeholder="Enter Username" required>
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="text" id="whatsapp" placeholder="Enter WhatsApp Number" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            
+            <h3>Payment</h3>
+            <p>Do Your Payment (880rs) On Your Preferred Account:</p>
+            <select id="paymentMethod" required>
+                <option value="">Select Payment Method</option>
+                <option value="jazzcash">JazzCash</option>
+                <option value="easypaisa">EasyPaisa</option>
+                <option value="sadapay">SadaPay</option>
+                <option value="nayapay">NayaPay</option>
+                <option value="bnb">BNB Smart Chain (BEP20)</option>
+            </select>
+
+            <div id="paymentDetails" style="display:none;">
+                <p id="accountDetails"></p>
+            </div>
+            
+            <p>Do Your Payment On The Above Account And Enter Your Transaction ID Below:</p>
+            <input type="text" id="transactionId" placeholder="Enter Transaction ID" required>
+            <p><strong>If Urgent, Contact Us On Email: teamatomcyberforce@gmail.com</strong></p>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Firebase Integration with IP Address -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyBe7Bvrn9LGXGS6olUeoErRnuojY1yQmCc",
+        authDomain: "acfhub-10a87.firebaseapp.com",
+        databaseURL: "https://acfhub-10a87-default-rtdb.firebaseio.com/",
+        projectId: "acfhub-10a87",
+        storageBucket: "acfhub-10a87.appspot.com",
+        messagingSenderId: "791737315833",
+        appId: "1:791737315833:web:5527bba867fae510338d28",
+        measurementId: "G-TXSBSME944"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    const paymentMethodDetails = {
+        jazzcash: {
+            details: "03256069667<br>JazzCash<br>Hina"
+        },
+        easypaisa: {
+            details: "03256069667<br>EasyPaisa<br>Hina"
+        },
+        sadapay: {
+            details: "03272057508<br>SadaPay<br>Jabbar Shah"
+        },
+        nayapay: {
+            details: "03126343387<br>NayaPay<br>Muhammad Siddique"
+        },
+        bnb: {
+            details: "0x28df58803f1fca967bcb36d4f7badde6107e39ad<br><br>BNB Smart Chain (BEP20)<br>"
+        }
+    };
+
+    document.getElementById("paymentMethod").addEventListener("change", function() {
+        const method = this.value;
+        const details = paymentMethodDetails[method];
+        if (details) {
+            document.getElementById("paymentDetails").style.display = "block";
+            document.getElementById("accountDetails").innerHTML = details.details;
+        } else {
+            document.getElementById("paymentDetails").style.display = "none";
+        }
+    });
+
+    document.getElementById("paymentForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const whatsapp = document.getElementById("whatsapp").value;
+        const password = document.getElementById("password").value;
+        const paymentMethod = document.getElementById("paymentMethod").value;
+        const transactionId = document.getElementById("transactionId").value;
+
+        // Fetch user's IP address
+        const ipResponse = await fetch("https://api.ipify.org?format=json");
+        const ipData = await ipResponse.json();
+        const userIP = ipData.ip;
+
+        // Save data to Firebase
+        set(ref(db, 'payments/' + Date.now()), {
+            username,
+            email,
+            whatsapp,
+            password,
+            paymentMethod,
+            transactionId,
+            ipAddress: userIP
+        }).then(() => {
+            alert("Payment Submitted Successfully!");
+            window.location.href = "success.html";
+        }).catch((error) => {
+            alert("Error: " + error.message);
+        });
+    });
+</script>
+    </script>
+</body>
+</html>

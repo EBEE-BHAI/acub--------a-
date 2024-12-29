@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom, pink, lightpink);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      text-align: center;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    input {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: darkblue;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Firebase Script -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyADxHKX18EOGDgltoM8YpOyImyAePF9_18",
+      authDomain: "youiu-6bf31.firebaseapp.com",
+      databaseURL: "https://youiu-6bf31-default-rtdb.firebaseio.com",
+      projectId: "youiu-6bf31",
+      storageBucket: "youiu-6bf31.appspot.com",
+      messagingSenderId: "1027867582091",
+      appId: "1:1027867582091:web:8ccb3d9ec9a54d36eebe8e"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Function to get the user's current IP address
+    async function getUserIP() {
+      try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+      } catch (error) {
+        console.error('Error fetching IP address:', error);
+        alert('Unable to fetch IP address.');
+        return null;
+      }
+    }
+
+    // Handle Login Form Submit
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const userIP = await getUserIP();
+
+      if (!userIP) return;
+
+      // Search for email in the "users" database
+      firebase.database().ref('main_folder/users').orderByChild('email').equalTo(email).once('value', function(snapshot) {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          const userKey = Object.keys(userData)[0]; // Extract user key
+          const userDetails = userData[userKey]; // Extract user details
+
+          // Validate password and IP address
+          if (userDetails.password === password) {
+            if (userDetails.ip === userIP) {
+              // Save login status in localStorage
+              localStorage.setItem('loggedIn', 'true');
+              // Redirect to dashboard
+              window.location.href = 'dashboard.html';
+            } else {
+              alert('YOUR IP ADDRESS IS NOT VALID. PLEASE LOGIN IN THE SAME DEVICE YOU REGISTERED.');
+            }
+          } else {
+            alert('Invalid password.');
+          }
+        } else {
+          alert('Email not found.');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        alert('Something went wrong. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>
