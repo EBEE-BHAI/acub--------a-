@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .tick-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+      opacity: 0;
+      animation: showTick 2s forwards;
+    }
+
+    .tick {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      border: 5px solid #fff;
+      border-radius: 50%;
+      animation: tickAnimation 1s ease-in-out infinite;
+    }
+
+    .tick::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      width: 10px;
+      height: 20px;
+      border: 3px solid #fff;
+      border-top: 0;
+      border-right: 0;
+      transform: rotate(45deg);
+    }
+
+    .message {
+      font-size: 18px;
+      color: #333;
+      opacity: 0;
+      animation: showMessage 2s 2s forwards;
+    }
+
+    /* Animations */
+    @keyframes showTick {
+      0% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes tickAnimation {
+      0%, 100% {
+        transform: rotate(45deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes showMessage {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tick-container">
+    <div class="tick"></div>
+  </div>
+
+  <p class="message">We have received your order, your payment will be verified, and you will receive your login credentials at your subscribed number in a few hours.</p>
+
+  <script>
+    // Optional: You can trigger any additional functionality or events if needed.
+    // For example, auto-hide the message after some time or change the animation timing.
+  </script>
+
+</body>
+</html>
